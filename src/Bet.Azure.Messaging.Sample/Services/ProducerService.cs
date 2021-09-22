@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Bet.Azure.Messaging.Sample.EventMessages;
+using Bet.Azure.Messaging.Sample.EventHandlers;
 
 using Microsoft.Extensions.Logging;
 

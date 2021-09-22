@@ -4,10 +4,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Azure.Messaging.ServiceBus;
+using Bet.Azure.Messaging.Sample.EventHandlers;
 
-using Bet.Azure.Messaging.Sample.EventMessages;
-using Bet.Azure.Messaging.Sample.Handlers;
+using Azure.Messaging.ServiceBus;
 
 using Microsoft.Extensions.Logging;
 
