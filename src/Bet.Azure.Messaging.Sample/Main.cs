@@ -39,13 +39,13 @@ namespace Bet.Azure.Messaging.Sample
             _logger.LogInformation("Main executed");
 
             // send to queue
-            //await _producerService.SendToQueueAsync(token);
+            await _producerService.SendToQueueAsync(token);
 
             //await _consumerService.ProcessQueueAsync(token);
 
-            await _producerService.SendToTopic(token);
+            //await _producerService.SendToTopic(token);
 
-            await _consumerService.ProcessTopicAsync(token);
+            //await _consumerService.ProcessTopicAsync(token);
 
             // await _consumerService.ProcessorAsync(token);
 

@@ -67,5 +67,13 @@ namespace Microsoft.Extensions.DependencyInjection
             _consumers.AddTopicMapping<THandler>(Named, topicName, messageName, subscription);
             Services.AddTransient<THandler>();
         }
+
+        /// <summary>
+        /// Register all of the handlers and start listening.
+        /// </summary>
+        public void RegisterConsumers()
+        {
+            Services.AddHostedService<ConsumerHostedService>();
+        }
     }
 }
