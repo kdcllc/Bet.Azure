@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bet.Azure.UnitTest", "test\Bet.Azure.UnitTest\Bet.Azure.UnitTest.csproj", "{A97F9949-88CA-4E26-AE86-76922498810F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{F289BEF2-5D46-458D-8F69-CD54D6C695DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F289BEF2-5D46-458D-8F69-CD54D6C695DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F289BEF2-5D46-458D-8F69-CD54D6C695DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A97F9949-88CA-4E26-AE86-76922498810F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A97F9949-88CA-4E26-AE86-76922498810F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A97F9949-88CA-4E26-AE86-76922498810F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A97F9949-88CA-4E26-AE86-76922498810F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{46666FF0-3493-427F-A328-AE97E2CA207D} = {914C34F2-FFE3-497B-B189-7CEF68C613BB}
 		{F289BEF2-5D46-458D-8F69-CD54D6C695DA} = {914C34F2-FFE3-497B-B189-7CEF68C613BB}
+		{A97F9949-88CA-4E26-AE86-76922498810F} = {6BEF13E5-17F2-4F19-A161-8145AE218F3D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C8B58109-F146-4477-9CD4-165A2B85E4F8}

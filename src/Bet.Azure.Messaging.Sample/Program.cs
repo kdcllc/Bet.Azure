@@ -45,7 +45,7 @@ try
 
     var result = await host.ExecuteAsync(async m => await m.RunAsync());
 
-    await host.StopAsync();
+    await host.WaitForShutdownAsync();
 
     Log.Information("AppHost Stopped");
 

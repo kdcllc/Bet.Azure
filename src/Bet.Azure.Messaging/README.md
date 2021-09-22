@@ -31,3 +31,14 @@ Azure Service Bus messaging library that provides with a framework to add multip
 ```bash
     dotnet add package Bet.Azure.Messaging
 ```
+
+## Security
+
+### MSI Specific Roles
+
+- `Azure Service Bus Data Receiver`
+- `Azure Service Bus Data Sender`
+
+## Testing
+
+[ServiceBusExplorer](https://github.com/paolosalvatori/ServiceBusExplorer)

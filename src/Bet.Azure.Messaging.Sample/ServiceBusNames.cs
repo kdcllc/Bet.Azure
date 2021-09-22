@@ -1,9 +1,18 @@
 ﻿namespace Bet.Azure.Messaging.Sample
 {
+    /// <summary>
+    /// Namespaces names for azure service bus.
+    /// </summary>
     public static class ServiceBusNames
     {
-        public const string QueuesOnly = "easykeys";
+        /// <summary>
+        /// https://betqueue.servicebus.windows.net/.
+        /// </summary>
+        public const string QueuesOnly = "betqueue";
 
-        public const string TopicSubscriptions = "easykeysbus";
+        /// <summary>
+        /// https://betbus.servicebus.windows.net/.
+        /// </summary>
+        public const string TopicSubscriptions = "betbus";
     }
 }

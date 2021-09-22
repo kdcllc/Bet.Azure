@@ -38,23 +38,22 @@ namespace Bet.Azure.Messaging.Sample
 
             _logger.LogInformation("Main executed");
 
-            // send to queue
-            await _producerService.SendToQueueAsync(token);
+            // send to a queue
+            //await _producerService.SendToQueueAsync(token);
+            //await _consumerService.StartReceivingQueueAsync(token);
+            //await Task.Delay(TimeSpan.FromSeconds(5), token);
+            //await _consumerService.StopReceivingQueueAsync(token);
 
-            //await _consumerService.ProcessQueueAsync(token);
-
-            //await _producerService.SendToTopic(token);
-
-            //await _consumerService.ProcessTopicAsync(token);
-
-            // await _consumerService.ProcessorAsync(token);
+            // send to a topic
+            await _producerService.SendToTopic(token);
+            await _consumerService.StartReceivingTopicAsync(token);
+            await Task.Delay(TimeSpan.FromSeconds(5), token);
+            await _consumerService.StopReceivingTopicAsync(token);
 
             // use this token for stopping the services
             token.ThrowIfCancellationRequested();
 
-            await Task.Delay(TimeSpan.FromMinutes(3));
-
-            return await Task.FromResult(0);
+            return 0;
         }
     }
 }

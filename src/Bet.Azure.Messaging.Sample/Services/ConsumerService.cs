@@ -29,20 +29,36 @@ namespace Bet.Azure.Messaging.Sample.Services
             _logger = logger;
         }
 
-        public Task ProcessQueueAsync(CancellationToken cancellationToken)
+        public Task StartReceivingQueueAsync(CancellationToken cancellationToken)
         {
             var queuesOnly = _consumerPools.First(x => x.Named == ServiceBusNames.QueuesOnly);
-
-            return queuesOnly.StartAsync<SendGridEventMessage, SendGridHandler>(cancellationToken);
+            return queuesOnly.StartAsync<BagMessage, BagMessageHandler>(cancellationToken);
         }
 
-        public Task ProcessTopicAsync(CancellationToken cancellationToken)
+        public Task StartReceivingTopicAsync(CancellationToken cancellationToken)
         {
             var topics = _consumerPools.First(x => x.Named == ServiceBusNames.TopicSubscriptions);
-            return topics.StartAsync<UspsHandler>(cancellationToken);
+            return topics.StartAsync<DynamicMessageHandler>(cancellationToken);
         }
 
-        public async Task ProcessorAsync(CancellationToken cancellationToken)
+        public Task StopReceivingQueueAsync(CancellationToken cancellationToken)
+        {
+            var queuesOnly = _consumerPools.First(x => x.Named == ServiceBusNames.QueuesOnly);
+            return queuesOnly.StopAsync<BagMessage, BagMessageHandler>(cancellationToken);
+        }
+
+        public Task StopReceivingTopicAsync(CancellationToken cancellationToken)
+        {
+            var topics = _consumerPools.First(x => x.Named == ServiceBusNames.TopicSubscriptions);
+            return topics.StopAsync<DynamicMessageHandler>(cancellationToken);
+        }
+
+        /// <summary>
+        /// Demostrate how to manually Create <see cref="ServiceBusProcessor"/>.
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task ProcessAsync(CancellationToken cancellationToken)
         {
             // 1. named value of the connection
             var client = _connections.CreateClient(ServiceBusNames.QueuesOnly);
@@ -98,12 +114,13 @@ namespace Bet.Azure.Messaging.Sample.Services
 
             _logger.LogInformation($"{DateTime.Now} :: Receiving Messages sendgridwebhooks");
             var receivedMessageCount = 0;
+
             while (true)
             {
                 var receivedMessage = await receiver.ReceiveMessageAsync(TimeSpan.FromSeconds(1));
                 if (receivedMessage != null)
                 {
-                    var o = receivedMessage.Body.ToObjectFromJson<SendGridEventMessage>();
+                    var o = receivedMessage.Body.ToObjectFromJson<BagMessage>();
 
                     _logger.LogInformation(o.Data);
                     receivedMessageCount++;
