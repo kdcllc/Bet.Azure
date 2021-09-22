@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
-
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>dotnet-bet.azure.messaging.sample-81831a98-88c1-4bd7-8459-144bf304cfda</UserSecretsId>
