@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace Bet.Azure.Messaging
         private readonly IAzureServiceBusConnection _connection;
         private readonly AzureMessagingServiceBuilder _serviceBuilder;
         private readonly ILogger<AzureConsumerPool> _logger;
+
+        private readonly ConcurrentDictionary<MessageConsumerInfo, ServiceBusProcessor> _processors = new ();
 
         public AzureConsumerPool(
             IServiceProvider serviceProvider,
@@ -50,6 +53,41 @@ namespace Bet.Azure.Messaging
         {
             var clients = _serviceBuilder.ConsumerMappings.Select(x => x.Value.First(p => p.Handler == typeof(THandler)));
             return RegisterClientAsync(clients, cancellationToken);
+        }
+
+        public Task StartAsync(CancellationToken cancellationToken = default)
+        {
+            var clients = _serviceBuilder.ConsumerMappings.SelectMany(x => x.Value);
+            return RegisterClientAsync(clients, cancellationToken);
+        }
+
+        public async Task StopAsync<TModel, THandler>(CancellationToken cancellationToken = default)
+            where TModel : EventMessage
+            where THandler : IMessageConsumerHandler<TModel>
+        {
+            var clients = _serviceBuilder.ConsumerMappings.Select(x => x.Value.First(p => p.MessageName == typeof(TModel).Name && p.Handler == typeof(THandler)));
+
+            await StopAsync(clients, cancellationToken);
+        }
+
+        public async Task StopAsync<THandler>(CancellationToken cancellationToken = default) where THandler : IDynamicMessageConsumerHandler
+        {
+            var clients = _serviceBuilder.ConsumerMappings.Select(x => x.Value.First(p => p.Handler == typeof(THandler)));
+
+            await StopAsync(clients, cancellationToken);
+        }
+
+        public async Task StopAsync(CancellationToken cancellationToken = default)
+        {
+            var pro = _processors.Values;
+            foreach (var processor in pro)
+            {
+                if (processor.IsProcessing)
+                {
+                    await processor.StopProcessingAsync(cancellationToken);
+                    await processor.CloseAsync(cancellationToken);
+                }
+            }
         }
 
         private async Task RegisterClientAsync(IEnumerable<MessageConsumerInfo> clients, CancellationToken cancellationToken)
@@ -103,6 +141,8 @@ namespace Bet.Azure.Messaging
                     // start processing
                     await processor.StartProcessingAsync();
                 }
+
+                _processors.TryAdd(clientName, processor);
             }
         }
 
@@ -150,6 +190,21 @@ namespace Bet.Azure.Messaging
             }
 
             return false;
+        }
+
+        private async Task StopAsync(IEnumerable<MessageConsumerInfo> clients, CancellationToken cancellationToken)
+        {
+            foreach (var client in clients)
+            {
+                if (_processors.TryGetValue(client, out var processor))
+                {
+                    if (processor.IsProcessing)
+                    {
+                        await processor.StopProcessingAsync(cancellationToken);
+                        await processor.CloseAsync(cancellationToken);
+                    }
+                }
+            }
         }
     }
 }

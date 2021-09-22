@@ -1,7 +1,5 @@
 ﻿using System;
 
-using Bet.BuildingBlocks.Messaging.Abstractions.Consumer;
-
 namespace Bet.Azure.Messaging.Internal
 {
     internal class MessageConsumerInfo

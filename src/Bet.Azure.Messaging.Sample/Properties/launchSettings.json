@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "bet.azure.messaging.sample": {
+    "Bet.Azure.Messaging.Sample": {
       "commandName": "Project",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"

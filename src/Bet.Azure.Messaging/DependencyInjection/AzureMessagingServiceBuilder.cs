@@ -1,9 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
+using Bet.Azure.Messaging;
 using Bet.Azure.Messaging.Internal;
 using Bet.BuildingBlocks.Messaging.Abstractions;
 using Bet.BuildingBlocks.Messaging.Abstractions.Consumer;
+
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -66,6 +72,21 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             _consumers.AddTopicMapping<THandler>(Named, topicName, messageName, subscription);
             Services.AddTransient<THandler>();
+        }
+
+        /// <summary>
+        /// Register all of the handlers and start listening.
+        /// </summary>
+        public void RegisterConsumers()
+        {
+            Services.AddMultipleHostedService(sp =>
+            {
+                var pools = sp.GetServices<IAzureConsumerPool>();
+                var pool = pools.ToList().FirstOrDefault(x => x.Named == Named);
+
+                var logger = sp.GetRequiredService<ILogger<ConsumerHostedService>>();
+                return new ConsumerHostedService(pool, logger);
+            });
         }
     }
 }
