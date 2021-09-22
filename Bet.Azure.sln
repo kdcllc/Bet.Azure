@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31717.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{914C34F2-FFE3-497B-B189-7CEF68C613BB}"
 EndProject
@@ -18,6 +18,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{859A57D8
 		build\sources.props = build\sources.props
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D0AFD619-F2C6-4317-8F4A-3746DE422468}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		GitVersion.yml = GitVersion.yml
+		LICENSE = LICENSE
+		nuget.config = nuget.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bet.Azure.UnitTest", "test\Bet.Azure.UnitTest\Bet.Azure.UnitTest.csproj", "{A97F9949-88CA-4E26-AE86-76922498810F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +45,10 @@ Global
 		{F289BEF2-5D46-458D-8F69-CD54D6C695DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F289BEF2-5D46-458D-8F69-CD54D6C695DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F289BEF2-5D46-458D-8F69-CD54D6C695DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A97F9949-88CA-4E26-AE86-76922498810F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A97F9949-88CA-4E26-AE86-76922498810F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A97F9949-88CA-4E26-AE86-76922498810F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A97F9949-88CA-4E26-AE86-76922498810F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +56,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{46666FF0-3493-427F-A328-AE97E2CA207D} = {914C34F2-FFE3-497B-B189-7CEF68C613BB}
 		{F289BEF2-5D46-458D-8F69-CD54D6C695DA} = {914C34F2-FFE3-497B-B189-7CEF68C613BB}
+		{A97F9949-88CA-4E26-AE86-76922498810F} = {6BEF13E5-17F2-4F19-A161-8145AE218F3D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C8B58109-F146-4477-9CD4-165A2B85E4F8}

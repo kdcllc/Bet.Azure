@@ -64,14 +64,15 @@ namespace Bet.Azure.Messaging
             foreach (var message in messages)
             {
                 var queuedMessage = new JsonSerializedMessage<T>(message);
+
+                if (!string.IsNullOrEmpty(producerInfo?.Subscription))
+                {
+                    queuedMessage.Subject = producerInfo.Subscription;
+                }
+
                 if (!string.IsNullOrEmpty(subject))
                 {
                     queuedMessage.Subject = subject;
-                }
-
-                if (!string.IsNullOrEmpty(producerInfo.Subscription))
-                {
-                    queuedMessage.Subject = producerInfo.Subscription;
                 }
 
                 queuedMessages.Enqueue(queuedMessage);
