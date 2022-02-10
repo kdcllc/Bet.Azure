@@ -2,16 +2,21 @@ next-version: 1.0
 
 branches:
   master:
+    regex: ^master$|^main$
+    mode: ContinuousDelivery
     tag: ''
     increment: Patch
+    is-mainline: true
 
   feature:
     regex: ^features?[/-]
-    tag: 'alpha'
+    mode: ContinuousDelivery
+    tag: useBranchName
     increment: Inherit
 
   develop:
     regex: ^dev(elop)?(ment)?$
+    mode: ContinuousDeployment
     tag: preview
     increment: Minor
 ignore:
