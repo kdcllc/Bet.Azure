@@ -32,6 +32,16 @@ Azure Service Bus messaging library that provides with a framework to add multip
     dotnet add package Bet.Azure.Messaging
 ```
 
+## Usage
+
+### Azure ServiceBus Queues
+
+![Azure ServiceBus Queues](../../img/azure-servicebus-queues-communication.png)
+
+### Azure ServiceBus Topics
+
+![Azure ServiceBus Topics](../../img/azure-servicebus-topics-communication.png)
+
 ## Security
 
 ### MSI Specific Roles

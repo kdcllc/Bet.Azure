@@ -11,9 +11,16 @@
 	<PackageReference Include="xunit" />
 	<PackageReference Include="xunit.runner.visualstudio" />
 	<PackageReference Include="coverlet.collector" />
+	<PackageReference Include="Bet.Extensions.Testing" />
+	<PackageReference Include="Moq" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="..\..\src\Bet.Azure.Messaging\Bet.Azure.Messaging.csproj" />
   </ItemGroup>
 
 	<ItemGroup>
-		<Using Include="XUnit"/>
+		<Using Include="Xunit" />
+		<Using Include="Xunit.Abstractions" />
 	</ItemGroup>
 </Project>

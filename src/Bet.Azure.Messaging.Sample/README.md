@@ -189,10 +189,14 @@ Corresponds to the following mapping:
 ```bash
     az logout
     az login
+
+    # https://andrewlock.net/how-to-set-the-hosting-environment-in-asp-net-core/
+    setx AZURE_TENANT_ID {azure_tenant_id}
 ```
 
 [JWT decoder](https://jwt.ms/)
 
 ## Reference
 
-[DI Console Template](https://github.com/kdcllc/Bet.Extensions.Templating)
+- [DI Console Template](https://github.com/kdcllc/Bet.Extensions.Templating)
+- [Azure Service Bus managed identity in Visual Studio returning 401 - Token issuer is invalid](https://stackoverflow.com/questions/67671421/azure-service-bus-managed-identity-in-visual-studio-returning-401-token-issuer)
