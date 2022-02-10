@@ -200,3 +200,5 @@ Corresponds to the following mapping:
 
 - [DI Console Template](https://github.com/kdcllc/Bet.Extensions.Templating)
 - [Azure Service Bus managed identity in Visual Studio returning 401 - Token issuer is invalid](https://stackoverflow.com/questions/67671421/azure-service-bus-managed-identity-in-visual-studio-returning-401-token-issuer)
+
+- `dotnet tool install --global GitVersion.Tool --version 5.5.1` and `dotnet-gitversion init`
