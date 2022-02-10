@@ -1,8 +1,11 @@
-﻿using System.Text.Json;
-
+﻿using Bet.Azure.UnitTest.Messages;
 using Bet.BuildingBlocks.Messaging.Abstractions.Consumer;
 
-namespace Bet.Azure.Messaging.Sample.EventHandlers;
+using Microsoft.Extensions.Logging;
+
+using System.Text.Json;
+
+namespace Bet.Azure.UnitTest.EventHandlers;
 
 public class DynamicMessageHandler : IDynamicMessageConsumerHandler
 {
@@ -10,7 +13,7 @@ public class DynamicMessageHandler : IDynamicMessageConsumerHandler
 
     public DynamicMessageHandler(ILogger<DynamicMessageHandler> logger)
     {
-        _logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     public Task HandleAsync(dynamic message, CancellationToken cancellationToken = default)

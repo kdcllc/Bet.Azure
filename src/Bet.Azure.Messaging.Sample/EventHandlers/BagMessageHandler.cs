@@ -1,28 +1,22 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using Bet.BuildingBlocks.Messaging.Abstractions.Consumer;
 
-using Bet.BuildingBlocks.Messaging.Abstractions.Consumer;
+namespace Bet.Azure.Messaging.Sample.EventHandlers;
 
-using Microsoft.Extensions.Logging;
-
-namespace Bet.Azure.Messaging.Sample.EventHandlers
+public class BagMessageHandler : IMessageConsumerHandler<BagMessage>
 {
-    public class BagMessageHandler : IMessageConsumerHandler<BagMessage>
+    private readonly ILogger<BagMessageHandler> _logger;
+
+    public BagMessageHandler(ILogger<BagMessageHandler> logger)
     {
-        private readonly ILogger<BagMessageHandler> _logger;
+        _logger = logger;
+    }
 
-        public BagMessageHandler(ILogger<BagMessageHandler> logger)
-        {
-            _logger = logger;
-        }
+    public Task HandleAsync(BagMessage @event, CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation("Message Received");
 
-        public Task HandleAsync(BagMessage @event, CancellationToken cancellationToken = default)
-        {
-            _logger.LogInformation("Message Received");
+        _logger.LogInformation(@event.Data);
 
-            _logger.LogInformation(@event.Data);
-
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
     }
 }

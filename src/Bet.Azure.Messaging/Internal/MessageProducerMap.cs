@@ -1,41 +1,37 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
-using System.Linq;
 
-namespace Bet.Azure.Messaging.Internal
+namespace Bet.Azure.Messaging.Internal;
+
+internal class MessageProducerMap
 {
-    internal class MessageProducerMap
+    private readonly ConcurrentDictionary<string, List<MessageProducerInfo>> _producerMappings = new();
+
+    internal ReadOnlyDictionary<string, List<MessageProducerInfo>> ProducerMappings => new(_producerMappings);
+
+    internal void AddQueueMapping(string namedClient, string queueOrTopicName, Type messageType)
     {
-        private readonly ConcurrentDictionary<string, List<MessageProducerInfo>> _producerMappings = new ();
+        Map(namedClient, queueOrTopicName, messageType, string.Empty);
+    }
 
-        internal ReadOnlyDictionary<string, List<MessageProducerInfo>> ProducerMappings => new (_producerMappings);
+    internal void AddTopicMapping(string namedClient, string topicName, Type messageType, string subsciption)
+    {
+        Map(namedClient, topicName, messageType, subsciption);
+    }
 
-        internal void AddQueueMapping(string namedClient, string queueOrTopicName, Type messageType)
+    private void Map(string namedClient, string queueOrTopicName, Type messageType, string subsciption)
+    {
+        // adds initial entry.
+        if (!_producerMappings.ContainsKey(namedClient))
         {
-            Map(namedClient, queueOrTopicName, messageType, string.Empty);
+            _producerMappings.TryAdd(namedClient, new());
         }
 
-        internal void AddTopicMapping(string namedClient, string topicName, Type messageType, string subsciption)
+        if (_producerMappings[namedClient].Any(x => x.MessageType == messageType))
         {
-            Map(namedClient, topicName, messageType, subsciption);
+            throw new ArgumentException($"Named Client {namedClient} already registered for '{nameof(messageType)}'", nameof(messageType));
         }
 
-        private void Map(string namedClient, string queueOrTopicName, Type messageType, string subsciption)
-        {
-            // adds initial entry.
-            if (!_producerMappings.ContainsKey(namedClient))
-            {
-                _producerMappings.TryAdd(namedClient, new());
-            }
-
-            if (_producerMappings[namedClient].Any(x => x.MessageType == messageType))
-            {
-                throw new ArgumentException($"Named Client {namedClient} already registered for '{nameof(messageType)}'", nameof(messageType));
-            }
-
-            _producerMappings[namedClient].Add(new MessageProducerInfo(queueOrTopicName, messageType, subsciption));
-        }
+        _producerMappings[namedClient].Add(new MessageProducerInfo(queueOrTopicName, messageType, subsciption));
     }
 }
