@@ -1,19 +1,16 @@
-﻿using System;
+﻿namespace Bet.Azure.Messaging.Exceptions;
 
-namespace Bet.Azure.Messaging.Exceptions
+public class MessageNotMappedException : Exception
 {
-    public class MessageNotMappedException : Exception
+    public MessageNotMappedException(string message) : base(message)
     {
-        public MessageNotMappedException(string message) : base(message)
-        {
-        }
+    }
 
-        public MessageNotMappedException() : base()
-        {
-        }
+    public MessageNotMappedException() : base()
+    {
+    }
 
-        public MessageNotMappedException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
+    public MessageNotMappedException(string message, Exception innerException) : base(message, innerException)
+    {
     }
 }

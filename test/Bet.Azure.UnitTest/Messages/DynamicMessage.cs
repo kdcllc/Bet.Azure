@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Bet.Azure.Messaging.Sample.EventHandlers;
+namespace Bet.Azure.UnitTest.Messages;
 
 public class DynamicMessage
 {
