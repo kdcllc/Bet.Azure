@@ -5,7 +5,7 @@ branches:
     regex: ^master$|^main$
     mode: Mainline
     tag: ""
-    increment: Major
+    increment: Patch
     is-mainline: true
 
   feature:
