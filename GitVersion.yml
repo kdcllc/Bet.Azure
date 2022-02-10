@@ -3,9 +3,9 @@ next-version: 1.0
 branches:
   master:
     regex: ^master$|^main$
-    mode: ContinuousDelivery
-    tag: ''
-    increment: Patch
+    mode: Mainline
+    tag: ""
+    increment: Major
     is-mainline: true
 
   feature:
