@@ -174,7 +174,7 @@ public class AzureConsumerPool : IAzureConsumerPool
                         continue;
                     }
 
-                    var eventType = _serviceBuilder.ConsumerPool.GeTypeByName(messageName!);
+                    var eventType = _serviceBuilder.ConsumerPool.GetTypeByName(messageName!);
                     var data = JsonSerializer.Deserialize(message, eventType);
                     var concreteType = typeof(IMessageConsumerHandler<>).MakeGenericType(eventType);
                     var handleAsyncMethod = concreteType.GetMethod("HandleAsync");
