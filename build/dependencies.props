@@ -18,7 +18,7 @@
 		<PackageReference Update="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.*" />
 		<PackageReference Update="Microsoft.Extensions.Hosting" Version="$(NetCoreVersion)" />
 		<PackageReference Update="Azure.Identity" Version="1.14.*" />
-		<PackageReference Update="Azure.Messaging.ServiceBus" Version="7.6.0" />
+		<PackageReference Update="Azure.Messaging.ServiceBus" Version="7.20.*" />
 		<PackageReference Update="Bet.Extensions.Options" Version="4.0.1" />
 		<PackageReference Update="Microsoft.Extensions.Logging" Version="$(NetCoreVersion)" />
 		<PackageReference Update="System.Text.Json" Version="8.0.*" />
@@ -30,14 +30,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.0.0" />
-		<PackageReference Update="xunit" Version="2.4.1" />
-		<PackageReference Update="Moq" Version="4.16.1" />
-		<PackageReference Update="xunit.runner.visualstudio" Version="2.4.3">
+		<PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.14.*" />
+		<PackageReference Update="xunit" Version="2.9.*" />
+		<PackageReference Update="Moq" Version="4.20.*" />
+		<PackageReference Update="xunit.runner.visualstudio" Version="3.1.*">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Update="coverlet.collector" Version="3.1.2">
+		<PackageReference Update="coverlet.collector" Version="6.0.*">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
