@@ -1,9 +1,7 @@
-﻿using Bet.Azure.UnitTest.Messages;
+﻿using System.Text.Json;
+using Bet.Azure.UnitTest.Messages;
 using Bet.BuildingBlocks.Messaging.Abstractions.Consumer;
-
 using Microsoft.Extensions.Logging;
-
-using System.Text.Json;
 
 namespace Bet.Azure.UnitTest.EventHandlers;
 

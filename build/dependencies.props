@@ -9,42 +9,42 @@
 		<NetCoreVersion>5.0.*</NetCoreVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'netstandard2.1'">
-		<NetCoreVersion>6.0.*</NetCoreVersion>
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net8.0' Or '$(TargetFramework)' == 'netstandard2.1'">
+		<NetCoreVersion>8.0.*</NetCoreVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Update="Bet.BuildingBlocks.Messaging.Abstractions" Version="2.0.0" />
 		<PackageReference Update="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.*" />
 		<PackageReference Update="Microsoft.Extensions.Hosting" Version="$(NetCoreVersion)" />
-		<PackageReference Update="Azure.Identity" Version="1.5.0" />
-		<PackageReference Update="Azure.Messaging.ServiceBus" Version="7.6.0" />
+		<PackageReference Update="Azure.Identity" Version="1.14.*" />
+		<PackageReference Update="Azure.Messaging.ServiceBus" Version="7.20.*" />
 		<PackageReference Update="Bet.Extensions.Options" Version="4.0.1" />
 		<PackageReference Update="Microsoft.Extensions.Logging" Version="$(NetCoreVersion)" />
-		<PackageReference Update="System.Text.Json" Version="6.0.2" />
+		<PackageReference Update="System.Text.Json" Version="8.0.*" />
 		<PackageReference Update="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
-
+		<PackageReference Update="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Update="Bet.Extensions.Testing" Version="4.0.1" />
 
 		<PackageReference Update="Bet.Extensions.Templating.Console" Version="2.0.*" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.0.0" />
-		<PackageReference Update="xunit" Version="2.4.1" />
-		<PackageReference Update="Moq" Version="4.16.1" />
-		<PackageReference Update="xunit.runner.visualstudio" Version="2.4.3">
+		<PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.14.*" />
+		<PackageReference Update="xunit" Version="2.9.*" />
+		<PackageReference Update="Moq" Version="4.20.*" />
+		<PackageReference Update="xunit.runner.visualstudio" Version="3.1.*">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Update="coverlet.collector" Version="3.1.2">
+		<PackageReference Update="coverlet.collector" Version="6.0.*">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup Label="SourceLink">
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.*" PrivateAssets="All" />
 	</ItemGroup>
 
 	<ItemGroup Label="Analyzers">

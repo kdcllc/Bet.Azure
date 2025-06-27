@@ -115,8 +115,15 @@ public class ConsumerService
             {
                 var o = receivedMessage.Body.ToObjectFromJson<BagMessage>();
 
-                _logger.LogInformation(o.Data);
-                receivedMessageCount++;
+                if (o != null)
+                {
+                    _logger.LogInformation(o.Data);
+                    receivedMessageCount++;
+                }
+                else
+                {
+                    _logger.LogWarning("Received message could not be deserialized to BagMessage.");
+                }
             }
             else
             {

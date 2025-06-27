@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup Label="Basic Settings">
-	<VersionPrefix>2.0.0-preview1</VersionPrefix>
+	<VersionPrefix>1.1.0-preview1</VersionPrefix>
 	<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
 	<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
 	<NoWarn>$(NoWarn);CS1591;NU1605;</NoWarn>
@@ -24,7 +24,9 @@
 	<PackageProjectUrl>https://github.com/kdcllc/Bet.Azure</PackageProjectUrl>
 	<RepositoryUrl>https://github.com/kdcllc/Bet.Azure.git</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
-	<PackageLicense>https://github.com/kdcllc/Bet.Azure/master/LICENSE</PackageLicense>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageReleaseNotes>CHANGELOG.md</PackageReleaseNotes>
 	<PackageIcon>icon.png</PackageIcon>
 	<PackageTags>dotnet, dotnetcore, azure, azure service bus, azure storage, hosting, extensions, azure key vault</PackageTags>
 	<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
