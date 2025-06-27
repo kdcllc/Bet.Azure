@@ -177,7 +177,23 @@ public class AzureConsumerPool : IAzureConsumerPool
                     var eventType = _serviceBuilder.ConsumerPool.GeTypeByName(messageName!);
                     var data = JsonSerializer.Deserialize(message, eventType);
                     var concreteType = typeof(IMessageConsumerHandler<>).MakeGenericType(eventType);
-                    await (Task)concreteType.GetMethod("HandleAsync").Invoke(handler, new object[] { data!, cancellationToken });
+                    var handleAsyncMethod = concreteType.GetMethod("HandleAsync");
+                    if (handleAsyncMethod != null)
+                    {
+                        var task = handleAsyncMethod.Invoke(handler, new object[] { data!, cancellationToken }) as Task;
+                        if (task != null)
+                        {
+                            await task.ConfigureAwait(false);
+                        }
+                        else
+                        {
+                            _logger.LogWarning("HandleAsync invocation returned null Task for handler {HandlerType}", handler.GetType().FullName);
+                        }
+                    }
+                    else
+                    {
+                        _logger.LogWarning("HandleAsync method not found on handler type {HandlerType}", handler.GetType().FullName);
+                    }
                 }
             }
 

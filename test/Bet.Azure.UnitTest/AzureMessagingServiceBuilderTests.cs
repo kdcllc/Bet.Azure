@@ -25,7 +25,7 @@ public class AzureMessagingServiceBuilderTests
         var queueName1 = "myQueue1";
         var queueName2 = "myQueue2";
 
-        var dict = new Dictionary<string, string>
+        var dict = new Dictionary<string, string?>
         {
             { "AzureServiceBus:Queue1:Name", queueName1 },
             { "AzureServiceBus:Queue2:Name", queueName2 }
@@ -89,11 +89,11 @@ public class AzureMessagingServiceBuilderTests
     }
 
     [Fact]
-    public void Register_One_Messsege_With_One_Queue_Producer_And_Consumer_Successfully()
+    public void Register_One_Message_With_One_Queue_Producer_And_Consumer_Successfully()
     {
         var queueName = "myQueue1";
 
-        var dict = new Dictionary<string, string>
+        var dict = new Dictionary<string, string?>
         {
             { "AzureServiceBus:Queue:Name", queueName }
         };

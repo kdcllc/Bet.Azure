@@ -1,6 +1,24 @@
 ﻿# Bet.Azure.Messaging.Sample
 
-This sample console app demostrates the following:
+![IStandWithIsrael](../../img/IStandWithIsrael.png)
+
+> The second letter in the Hebrew alphabet is the ב bet/beit. Its meaning is "house". In the ancient pictographic Hebrew it was a symbol resembling a tent on a landscape.
+
+The goal of this repo is to provide with a reusable functionality for developing with Azure Cloud.
+
+The libraries are closely integrate with [Azure SDK](https://azure.microsoft.com/en-us/downloads/).
+
+## Hire me
+
+Please send [email](mailto:info@kingdavidconsulting.com) if you consider to **hire me**.
+
+[![buymeacoffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/vyve0og)
+
+## Give a Star! :star:
+
+If you like or are using this project to learn or start your solution, please give it a star. Thanks!
+
+This sample console app demonstrates the following:
 
 - Registering Handlers for Queues/Topics with Subscriptions
 - Automatically register consumers for processing.
@@ -85,7 +103,7 @@ namespace Bet.Azure.Messaging.Sample.EventHandlers
             });
 ```
 
-5. Configure`appsetting.json`
+5. Configure`appsettings.json`
 
 ```json
   "AzureServiceBus": {
@@ -200,5 +218,3 @@ Corresponds to the following mapping:
 
 - [DI Console Template](https://github.com/kdcllc/Bet.Extensions.Templating)
 - [Azure Service Bus managed identity in Visual Studio returning 401 - Token issuer is invalid](https://stackoverflow.com/questions/67671421/azure-service-bus-managed-identity-in-visual-studio-returning-401-token-issuer)
-
-- `dotnet tool install --global GitVersion.Tool --version 5.5.1` and `dotnet-gitversion init`

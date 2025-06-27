@@ -75,11 +75,15 @@ public sealed class AzureMessagingServiceBuilder : IAzureMessagingServiceBuilder
     /// </summary>
     public void RegisterConsumers()
     {
-        Services.AddMultipleHostedService(sp =>
+        _ = Services.AddMultipleHostedService(sp =>
         {
             var pools = sp.GetServices<IAzureConsumerPool>();
             var pool = pools.ToList().FirstOrDefault(x => x.Named == Named);
-
+            if (pool is null)
+            {
+                throw new InvalidOperationException($"No consumer pool found for named '{Named}'. Ensure you have registered the consumer pool.");
+            }
+            
             var logger = sp.GetRequiredService<ILogger<ConsumerHostedService>>();
             return new ConsumerHostedService(pool, logger);
         });

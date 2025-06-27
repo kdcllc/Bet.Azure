@@ -75,6 +75,12 @@ public class AzureProducerPool : IAzureProducerPool
 
         var client = _connection.CreateClient(Named);
 
+        if (producerInfo is null)
+        {
+            _logger.LogError("No producer mapping found for message type {MessageType} in named {Named}.", typeof(T), Named);
+            throw new MessageNotMappedException($"No producer mapping found for message type {typeof(T)} in named {Named}.");
+        }
+
         var sender = client.CreateSender(producerInfo.QueueOrTopicName);
 
         // create a message batch that we can send

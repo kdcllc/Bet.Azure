@@ -39,9 +39,11 @@ public class Main : IMain
 
         // send to a topic
         await _producerService.SendToTopic(token);
+
         // await _consumerService.StartReceivingTopicAsync(token);
         await Task.Delay(TimeSpan.FromSeconds(5), token);
-        //await _consumerService.StopReceivingTopicAsync(token);
+
+        // await _consumerService.StopReceivingTopicAsync(token);
 
         // use this token for stopping the services
         token.ThrowIfCancellationRequested();
