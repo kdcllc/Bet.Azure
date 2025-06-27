@@ -79,6 +79,7 @@ jobs:
       - name: Display GitVersion outputs
         run: |
           echo "Version: ${{ needs.build.outputs.Version }}"
+          echo "Version: ${{ needs.build.outputs.Version }}"
           echo "CommitsSinceVersionSource: ${{ needs.build.outputs.CommitsSinceVersionSource }}"
 
       - name: Create Tag and Release
