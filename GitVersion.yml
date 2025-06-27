@@ -1,20 +1,20 @@
-mode: Mainline
-next-version: 1.0
+workflow: GitHubFlow/v1
+mode: ContinuousDeployment
+next-version: 1.0.0
 branches:
   master:
     mode: ContinuousDeployment
-    tag: ''
-    increment: Patch
+    label: ''
+    increment: Minor
     regex: ^master$|^main$
-    is-mainline: true
   feature:
     mode: ContinuousDelivery
-    tag: useBranchName
+    label: useBranchName
     increment: Inherit
     regex: ^features?[/-]
   develop:
     mode: ContinuousDeployment
-    tag: preview
+    label: preview
     increment: Minor
     regex: ^dev(elop)?(ment)?$
 ignore:
