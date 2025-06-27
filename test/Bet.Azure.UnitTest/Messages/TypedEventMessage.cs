@@ -1,6 +1,5 @@
-﻿using Bet.BuildingBlocks.Messaging.Abstractions;
-
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using Bet.BuildingBlocks.Messaging.Abstractions;
 
 namespace Bet.Azure.UnitTest.Messages;
 
