@@ -3,7 +3,7 @@ mode: ContinuousDeployment
 next-version: 1.2.0
 branches:
   master:
-    mode: ContinuousDeployment
+    mode: ManualDeployment
     label: ''
     regex: ^master$|^main$
   feature:
@@ -11,7 +11,7 @@ branches:
     label: useBranchName
     regex: ^features?[/-]
   develop:
-    mode: ContinuousDeployment
+    mode: ManualDeployment
     label: preview
     regex: ^dev(elop)?(ment)?$
 ignore:
