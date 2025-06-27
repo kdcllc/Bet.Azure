@@ -4,8 +4,7 @@
 [![NuGet](https://img.shields.io/nuget/v/Bet.Azure.Messaging.svg)](https://www.nuget.org/packages?q=Bet.Azure.Messaging)
 ![Nuget](https://img.shields.io/nuget/dt/Bet.Azure.Messaging)
 
-
-![Stand With Israel](./img/IStandWithIsrael.png)
+![I Stand With Israel](./img/IStandWithIsrael.png)
 
 > The second letter in the Hebrew alphabet is the ב bet/beit. Its meaning is "house". In the ancient pictographic Hebrew it was a symbol resembling a tent on a landscape.
 
@@ -15,7 +14,7 @@ The libraries are closely integrate with [Azure SDK](https://azure.microsoft.com
 
 ## Hire me
 
-Please send [email](mailto:info@kingdavidconsulting@.com) if you consider to **hire me**.
+Please send [email](mailto:info@kingdavidconsulting.com) if you consider to **hire me**.
 
 [![buymeacoffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/vyve0og)
 

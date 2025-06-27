@@ -1,6 +1,6 @@
 ﻿# Bet.Azure.Messaging.Sample
 
-![IStandWithIsrarl](../../img/IStandWithIsrael.png)
+![IStandWithIsrael](../../img/IStandWithIsrael.png)
 
 > The second letter in the Hebrew alphabet is the ב bet/beit. Its meaning is "house". In the ancient pictographic Hebrew it was a symbol resembling a tent on a landscape.
 
@@ -17,7 +17,6 @@ Please send [email](mailto:info@kingdavidconsulting.com) if you consider to **hi
 ## Give a Star! :star:
 
 If you like or are using this project to learn or start your solution, please give it a star. Thanks!
-
 
 This sample console app demonstrates the following:
 
@@ -104,7 +103,7 @@ namespace Bet.Azure.Messaging.Sample.EventHandlers
             });
 ```
 
-5. Configure`appsetting.json`
+5. Configure`appsettings.json`
 
 ```json
   "AzureServiceBus": {
@@ -219,5 +218,3 @@ Corresponds to the following mapping:
 
 - [DI Console Template](https://github.com/kdcllc/Bet.Extensions.Templating)
 - [Azure Service Bus managed identity in Visual Studio returning 401 - Token issuer is invalid](https://stackoverflow.com/questions/67671421/azure-service-bus-managed-identity-in-visual-studio-returning-401-token-issuer)
-
-- `dotnet tool install --global GitVersion.Tool --version 5.5.1` and `dotnet-gitversion init`
