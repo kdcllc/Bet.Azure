@@ -1,4 +1,4 @@
-name: "Master and Dev CI/CD"
+name: "Publish CI/CD"
 
 # Controls when the workflow will run
 on:
