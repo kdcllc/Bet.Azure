@@ -1,0 +1,10 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+services:
+  betazuremessagingsample:
+    image: betazuremessagingsample
+    build:
+      context: .
+      dockerfile: src/Bet.Azure.Messaging.Sample/Dockerfile
+    ports:
+      - 5000:5000

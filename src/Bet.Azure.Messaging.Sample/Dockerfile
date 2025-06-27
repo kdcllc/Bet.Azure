@@ -1,20 +1,29 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-FROM mcr.microsoft.com/dotnet/runtime:5.0-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
+EXPOSE 5000
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
+ENV ASPNETCORE_URLS=http://+:5000
+
+USER app
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG configuration=Release
 WORKDIR /src
-COPY ["bet.azure.messaging.sample/bet.azure.messaging.sample.csproj", "bet.azure.messaging.sample/"]
-RUN dotnet restore "bet.azure.messaging.sample/bet.azure.messaging.sample.csproj"
+COPY ["build/", "build/"]
+COPY ["Directory.Build.props", "Directory.Build.props"]
+COPY ["Directory.Build.targets", "Directory.Build.targets"]
+
+COPY ["src/Bet.Azure.Messaging.Sample/Bet.Azure.Messaging.Sample.csproj", "src/Bet.Azure.Messaging.Sample/"]
+RUN dotnet restore "src/Bet.Azure.Messaging.Sample/Bet.Azure.Messaging.Sample.csproj"
 COPY . .
-WORKDIR "/src/bet.azure.messaging.sample"
-RUN dotnet build "bet.azure.messaging.sample.csproj" -c Release -o /app/build
+
+WORKDIR "/src/src/Bet.Azure.Messaging.Sample"
+RUN dotnet build "Bet.Azure.Messaging.Sample.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "bet.azure.messaging.sample.csproj" -c Release -o /app/publish
+ARG configuration=Release
+RUN dotnet publish "Bet.Azure.Messaging.Sample.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "bet.azure.messaging.sample.dll"]
+ENTRYPOINT ["dotnet", "Bet.Azure.Messaging.Sample.dll"]
