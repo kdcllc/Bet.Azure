@@ -15,7 +15,7 @@ The libraries are closely integrate with [Azure SDK](https://azure.microsoft.com
 
 ## Hire me
 
-Please send [email](mailto:kingdavidconsulting@gmail.com) if you consider to **hire me**.
+Please send [email](mailto:info@kingdavidconsulting@.com) if you consider to **hire me**.
 
 [![buymeacoffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/vyve0og)
 
