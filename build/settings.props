@@ -26,6 +26,7 @@
 	<RepositoryType>git</RepositoryType>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageReleaseNotes>CHANGELOG.md</PackageReleaseNotes>
 	<PackageIcon>icon.png</PackageIcon>
 	<PackageTags>dotnet, dotnetcore, azure, azure service bus, azure storage, hosting, extensions, azure key vault</PackageTags>
 	<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
